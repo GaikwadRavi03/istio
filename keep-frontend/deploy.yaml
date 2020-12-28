@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keep-frontend-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: keep-frontend
+  template:
+    metadata:
+      labels:
+        app: keep-frontend
+    spec:
+      containers:
+        -
+          name: keep-frontend
+          image: 493165369913.dkr.ecr.ap-south-1.amazonaws.com/frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              name: http-port
+          args:
+           - /bin/sh
+           - -c
+           - cd /app-f && npx serve -s /app-f/build -l 3000
