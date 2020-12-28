@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keep-backend-service
+spec:
+  ports:
+  - port: 4000
+#    protocol: TCP
+    targetPort: 4000
+  selector:
+    app: keep-backend
+#  type: LoadBalancer
+  type: NodePort

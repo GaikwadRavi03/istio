@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keep-backend-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keep-backend
+  template:
+    metadata:
+      labels:
+        app: keep-backend
+    spec:
+      containers:
+      - image: 493165369913.dkr.ecr.ap-south-1.amazonaws.com/backend:latest
+        name: keep-backend
+        ports:
+        - containerPort: 4000
